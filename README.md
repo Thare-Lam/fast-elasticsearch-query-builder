@@ -11,23 +11,27 @@
    }
    ```
 
-2. 继承BaseQueryBuilder
+2. 编写QueryBuilder类继承BaseQueryBuilder, 传入刚写好的SearchCriteria范型
 
    ```java
    public class QueryBuilder extends BaseQueryBuilder<SearchCriteria> {
    }
    ```
 
-3. build
+3. 调用QueryBuilder的build方法构造query
 
    ```java
-   QueryBuilder queryBuilder = new QueryBuilder();
-   SearchCriteria searchCriteria = new SearchCriteria();
-   searchCriteria.setName("jack");
-   String queryString = queryBuilder.build(searchCriteria);
+   public class TestQueryBuilder {
+       public static void main(String[] args) {
+           QueryBuilder queryBuilder = new QueryBuilder();
+   		SearchCriteria searchCriteria = new SearchCriteria();
+   		searchCriteria.setName("jack");
+   		System.out.println(queryBuilder.build(searchCriteria));
+       }
+   }
    ```
 
-   queryString: 
+   结果
 
    ```json
    {
