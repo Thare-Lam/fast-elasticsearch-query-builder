@@ -1,5 +1,5 @@
 # fast-es-query-builder
-A fast way to build es query, even without coding.
+A fast way to build **ElasticSearch** query string, ***even without writing implement code.***
 
 *Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)*
 
@@ -7,7 +7,7 @@ A fast way to build es query, even without coding.
 
 You can integrate it in your project with these steps:
 
-1. Complete the search criteria DTO（add correct @annotation on the field）
+1. Complete the search criteria DTO **MySearchCirteria**（add correct @annotation on the field）
 
    ```java
    public class MySearchCirteria {
@@ -17,14 +17,14 @@ You can integrate it in your project with these steps:
    }
    ```
 
-2. Complete the query builder class extending the  **BaseQueryBuilder**
+2. Complete the query builder class **MyQueryBuilder** extending the  **BaseQueryBuilder**, with specifing **MySearchCirteria**  as the generics class
 
    ```java
    public class MyQueryBuilder extends BaseQueryBuilder<MySearchCriteria> {
    }
    ```
 
-3. Invoke MyQueryBuilder#build to build the query string
+3. Invoke **MyQueryBuilder#build** to build the query string
 
    ```java
    public class TestQueryBuilder {

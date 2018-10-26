@@ -1,6 +1,6 @@
 # fast-es-query-builder
 
-迅速构建es query，甚至可以不写一行实现代码。
+迅速构建**ElasticSearch**查询语句，***甚至可以不写一行实现代码。***
 
 *其它语言: [English](README.md), [简体中文](README.zh-cn.md)*
 
@@ -8,7 +8,7 @@
 
 只需以下几步即可快速集成:
 
-1. 编写搜索条件DTO（在字段上添加相应@注解）
+1. 编写搜索条件DTO **MySearchCirteria**（在字段上添加相应@注解）
 
    ```java
    public class MySearchCirteria {
@@ -18,14 +18,14 @@
    }
    ```
 
-2. 编写QueryBuilder类继承**BaseQueryBuilder**, 传入刚写好的SearchCriteria范型
+2. 编写query builder类 **MyQueryBuilder** 继承 **BaseQueryBuilder**, 并指定 **SearchCriteria** 为范型类
 
    ```java
    public class MyQueryBuilder extends BaseQueryBuilder<MySearchCriteria> {
    }
    ```
 
-3. 调用QueryBuilder的build方法构造query
+3. 调用 **MyQueryBuilder#build** 构造query
 
    ```java
    public class TestQueryBuilder {
