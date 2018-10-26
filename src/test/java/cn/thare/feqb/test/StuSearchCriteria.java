@@ -59,7 +59,7 @@ public class StuSearchCriteria {
     private String excludedAddress;
 
     @Should
-    @Match(operator = Match.Operator.OR)
+    @Match(operator = Match.Operator.AND)
     private String introduce;
 
 }
