@@ -1,13 +1,14 @@
 # fast-es-query-builder
-A fast way to build es query, even without coding.
 
-*Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)*
+迅速构建es query，甚至可以不写一行实现代码。
 
-## Brief
+*其它语言: [English](README.md), [简体中文](README.zh-cn.md)*
 
-You can integrate it in your project with these steps:
+## 简介
 
-1. Complete the search criteria DTO（add correct @annotation on the field）
+只需以下几步即可快速集成:
+
+1. 编写搜索条件DTO（在字段上添加相应@注解）
 
    ```java
    public class MySearchCirteria {
@@ -17,14 +18,14 @@ You can integrate it in your project with these steps:
    }
    ```
 
-2. Complete the query builder class extending the  **BaseQueryBuilder**
+2. 编写QueryBuilder类继承**BaseQueryBuilder**, 传入刚写好的SearchCriteria范型
 
    ```java
    public class MyQueryBuilder extends BaseQueryBuilder<MySearchCriteria> {
    }
    ```
 
-3. Invoke MyQueryBuilder#build to build the query string
+3. 调用QueryBuilder的build方法构造query
 
    ```java
    public class TestQueryBuilder {
@@ -37,7 +38,7 @@ You can integrate it in your project with these steps:
    }
    ```
 
-   result
+   结果
 
    ```json
    {
