@@ -70,4 +70,14 @@
    }
    ```
 
+## 用法
 
+***fase-es-query-builder*** 提供两种类型的注解来构造query: **func** 和 **query**
+
+### func
+
+功能性注解，用于设置查询的from/size/_sources等属性
+
+### query
+
+查询类注解，用于构造query子句
