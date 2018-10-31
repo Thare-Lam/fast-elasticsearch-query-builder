@@ -7,7 +7,7 @@ A fast way to build **ElasticSearch** query string, ***even without writing impl
 
 You can integrate it in your project with these steps:
 
-1. Complete the search criteria DTO **MySearchCirteria**（add correct @annotation on the field）
+1. Complete the search criteria DTO **MySearchCirteria**（***add correct @annotation on the field***）
 
    ```java
    public class MySearchCirteria {

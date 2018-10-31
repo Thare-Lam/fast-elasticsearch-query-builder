@@ -8,7 +8,7 @@
 
 只需以下几步即可快速集成:
 
-1. 编写搜索条件DTO **MySearchCirteria**（在字段上添加相应@注解）
+1. 编写搜索条件DTO **MySearchCirteria**（***在字段上添加相应@注解***）
 
    ```java
    public class MySearchCirteria {
@@ -76,7 +76,18 @@
 
 ### func
 
-功能性注解，用于设置查询的from/size/_sources等属性
+功能性注解，用于设置查询属性
+
+| 注解              | 字段类型            | 功能                                  | 参数                                                         |
+| ----------------- | ------------------- | ------------------------------------- | ------------------------------------------------------------ |
+| @Higilighters     | Collection\<String> | 设置高亮                              | **type**: 高亮类型，默认为"fvh"                              |
+| @PageNo           | Integer             | 设置  ***from***                      | -                                                            |
+| @PageSize         | Integer             | 设置 **size**                         | -                                                            |
+| @Sort             | List\<Sortable>     | 设置 ，需自行实现 ***Sortable*** 接口 | -                                                            |
+| @Source           | Collection\<String> | 设置 ***_source.includes***           | -                                                            |
+| @TermsAggregation | Integer             | 设置 ***Terms Aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
+
+> 注：***@PageNo*** 和 ***@PageSize*** 最终将转换成 ***from*** 和 ***size***，且保证 `from + size <= max_result_window`
 
 ### query
 
