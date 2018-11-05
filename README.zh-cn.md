@@ -115,13 +115,13 @@
   决定匹配行为
 
 	| 注解      | 字段类型      | 功能                      | 参数                                                         |
-| --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
-| @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
-| @Term     | -             | 设置 ***term query***     | -                                                            |
-| @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
-| @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
-| @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
-| @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
+    | --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
+    | @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
+    | @Term     | -             | 设置 ***term query***     | -                                                            |
+    | @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
+    | @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+    | @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
+    | @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
 
 	> 以上注解均包含 **fieldName** 参数，表示构造 query 时的索引字段名，默认取注解所在字段的名称
 
