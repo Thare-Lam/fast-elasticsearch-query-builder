@@ -23,17 +23,8 @@ public abstract class AbstractQueryBuilder<T> {
 
     private PageTool pageTool;
 
-    /**
-     * Set custom {@link PageTool}
-     *
-     * @param pageTool custom {@link PageTool}
-     */
-    private void setPageTool(PageTool pageTool) {
-        this.pageTool = pageTool;
-    }
-
     protected AbstractQueryBuilder() {
-        this.pageTool = PageTool.defaultPageTool();
+        this.pageTool = generatePageTool();
     }
 
     /**
@@ -48,6 +39,14 @@ public abstract class AbstractQueryBuilder<T> {
         setSearchSource(searchSource, t);
         postBuild(searchSource, t);
         return searchSource.toString();
+    }
+
+    /**
+     * Generate {@link PageTool}
+     * @return the {@link PageTool} object
+     */
+    protected PageTool generatePageTool() {
+        return PageTool.defaultPageTool();
     }
 
     private void setSearchSource(SearchSourceBuilder searchSource, T t) {

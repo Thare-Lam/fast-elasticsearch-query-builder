@@ -1,6 +1,7 @@
 package cn.thare.feqb.test;
 
 import cn.thare.feqb.builder.BaseQueryBuilder;
+import cn.thare.feqb.helper.PageTool;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
@@ -12,6 +13,12 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StuQueryBuilder extends BaseQueryBuilder<StuSearchCriteria> {
 
     @Override
+    protected PageTool generatePageTool() {
+        // custom PageTool
+        return PageTool.builder().defaultPageSize(10).maxPageSize(100).build();
+    }
+
+    @Override
     protected void preBuild(SearchSourceBuilder searchSource, StuSearchCriteria stuSearchCriteria) {
         // rewrite search criteria
         stuSearchCriteria.setCustomField("customPrefix-" + stuSearchCriteria.getCustomField() + "-customSuffix");
@@ -19,7 +26,7 @@ public class StuQueryBuilder extends BaseQueryBuilder<StuSearchCriteria> {
 
     @Override
     protected void postBuild(SearchSourceBuilder searchSource, StuSearchCriteria stuSearchCriteria) {
-        // special login
+        // special logic
         if (stuSearchCriteria.getPageSize() == 1) {
             searchSource.size(10);
         }
