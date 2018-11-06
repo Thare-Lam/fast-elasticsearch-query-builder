@@ -49,7 +49,7 @@
          "must": [
            {
              "match": {
-               "name2": {
+               "name": {
                  "query": "jack",
                  "operator": "OR",
                  "prefix_length": 0,
@@ -97,35 +97,35 @@
 
 用于构造query子句，又分为**搜索上下文注解**和**搜索类型注解**，两者**必须一起使用**。
 
-* ##### 搜索上下文注解
+##### 搜索上下文注解
 
-  决定搜索类型如何影响搜索结果（过滤还是影响评分）
+决定搜索类型如何影响搜索结果（过滤还是影响评分）
 
-  | 注解     | 功能                                                         |
-  | -------- | ------------------------------------------------------------ |
-  | @Must    | 设置 ***must query***                                        |
-  | @MustNot | 设置 ***must_not query***                                    |
-  | @Should  | 设置 ***should query***                                      |
-  | @Filter  | 设置 ***filter query***                                      |
-  | *@Or*    | 将转换成 ***filter query*** 中的 **should** 子句，同 **sql** 中的 **or** |
-  | *@OrNot* | 将转换成 ***filter query*** 中的 **should.mustNot** 子句，同 **sql** 中的 **or not** |
+| 注解     | 功能                                                         |
+| -------- | ------------------------------------------------------------ |
+| @Must    | 设置 ***must query***                                        |
+| @MustNot | 设置 ***must_not query***                                    |
+| @Should  | 设置 ***should query***                                      |
+| @Filter  | 设置 ***filter query***                                      |
+| *@Or*    | 将转换成 ***filter query*** 中的 **should** 子句，同 **sql** 中的 **or** |
+| *@OrNot* | 将转换成 ***filter query*** 中的 **should.mustNot** 子句，同 **sql** 中的 **or not** |
 
-	> @Or 和 @OrNot 不是标准的 ES 搜索上下文类型
+> @Or 和 @OrNot 不是标准的 ES 搜索上下文类型
 
-* ##### 搜索类型注解
+##### 搜索类型注解
 
-  决定匹配行为
+决定匹配行为
 
-	| 注解      | 字段类型      | 功能                      | 参数                                                         |
-  | --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
-  | @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
-  | @Term     | -             | 设置 ***term query***     | -                                                            |
-  | @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
-  | @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
-  | @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
-  | @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
+| 注解      | 字段类型      | 功能                      | 参数                                                         |
+| --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
+| @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
+| @Term     | -             | 设置 ***term query***     | -                                                            |
+| @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
+| @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+| @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
+| @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
 
-	> 以上注解均包含 **fieldName** 参数，表示构造 query 时的索引字段名，默认取注解所在字段的名称
+> 以上注解均包含 **fieldName** 参数，表示构造 query 时的索引字段名，默认取注解所在字段的名称
 
 ### 方法说明
 
@@ -145,4 +145,4 @@ protected void customFilterQueries(List<QueryBuilder> filterQueries, StuSearchCr
 }
 ```
 
-更详细的用法可以参考`test/`目录下的样例。
+**更详细的用法可以参考`test/`目录下的样例。**
