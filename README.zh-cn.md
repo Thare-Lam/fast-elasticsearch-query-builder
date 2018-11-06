@@ -8,7 +8,7 @@
 
 只需以下几步即可快速集成:
 
-1. 编写搜索条件DTO **MySearchCirteria**（***在字段上添加相应@注解***）
+1. 编写搜索条件 DTO **MySearchCirteria**（***在字段上添加相应@注解***）
 
    ```java
    public class MySearchCirteria {
@@ -18,7 +18,7 @@
    }
    ```
 
-2. 编写query builder类 **MyQueryBuilder** 继承 **BaseQueryBuilder**, 并指定 **SearchCriteria** 为范型类
+2. 编写 query builder 类 **MyQueryBuilder** 继承 **BaseQueryBuilder**, 并指定 **SearchCriteria** 为泛型类
 
    ```java
    public class MyQueryBuilder extends BaseQueryBuilder<MySearchCriteria> {
@@ -76,7 +76,7 @@
 
 ### 注解说明
 
-***fast-elasticsearch-query-builder*** 提供两种类型的注解来构造query: **功能性注解**和**查询类注解**
+***fast-elasticsearch-query-builder*** 提供两种类型的注解来构造 query: **功能性注解**和**查询类注解**
 
 #### 功能性注解
 

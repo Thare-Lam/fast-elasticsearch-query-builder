@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.thare</groupId>
-    <artifactId>fast-es-query-builder</artifactId>
+    <artifactId>fast-elasticsearch-query-builder</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
