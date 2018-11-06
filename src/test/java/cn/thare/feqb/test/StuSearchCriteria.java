@@ -62,4 +62,9 @@ public class StuSearchCriteria {
     @Match(operator = Match.Operator.AND)
     private String introduce;
 
+    /**
+     * this field will affect query in customXxQueries method
+     */
+    private String customField;
+
 }

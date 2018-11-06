@@ -25,6 +25,7 @@ public class TestQueryBuilder {
                 .name("ja*")
                 .excludedAddress("Beijing")
                 .introduce("java python")
+                .customField("customFieldValue")
                 .build();
         log.info("dsl: \n{}", queryBuilder.build(searchCriteria));
     }

@@ -4,7 +4,7 @@
 
 *其它语言: [English](README.md), [简体中文](README.zh-cn.md)*
 
-## 0x00 简介
+## 简介
 
 只需以下几步即可快速集成:
 
@@ -70,7 +70,9 @@
    }
    ```
 
-## 0x01 说明
+***fase-es-query-builder*** *基于 `org.elasticsearch-elasticsearch-6.3.0` 来生成dsl，故兼容性与 `org.elasticsearch-elasticsearch-6.3.0` 一致。*
+
+## 说明
 
 ### 注解说明
 
@@ -115,13 +117,13 @@
   决定匹配行为
 
 	| 注解      | 字段类型      | 功能                      | 参数                                                         |
-    | --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
-    | @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
-    | @Term     | -             | 设置 ***term query***     | -                                                            |
-    | @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
-    | @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
-    | @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
-    | @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
+  | --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
+  | @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
+  | @Term     | -             | 设置 ***term query***     | -                                                            |
+  | @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
+  | @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+  | @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
+  | @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
 
 	> 以上注解均包含 **fieldName** 参数，表示构造 query 时的索引字段名，默认取注解所在字段的名称
 
@@ -129,3 +131,18 @@
 
 AbstractQueryBuilder#build 方法流程如下
 
+![AbstractQueryBuilder#build flow chart](https://raw.githubusercontent.com/Thare-Lam/fast-es-query-builder/master/query-builder-flow-chart.jpg)
+
+你可以在抽象方法中自定义 query。
+
+例如，自定义 filter query
+
+```java
+@Override
+protected void customFilterQueries(List<QueryBuilder> filterQueries, StuSearchCriteria stuSearchCriteria) {
+    // 在这里自定义不通过注解方式生成的 query
+    Optional.ofNullable(stuSearchCriteria.getCustomField()).ifPresent(t -> filterQueries.add(termQuery("customFilterField", t)));
+}
+```
+
+更详细的用法可以参考`test/`目录下的样例。

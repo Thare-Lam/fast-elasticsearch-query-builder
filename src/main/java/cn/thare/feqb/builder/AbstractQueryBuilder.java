@@ -28,7 +28,7 @@ public abstract class AbstractQueryBuilder<T> {
      *
      * @param pageTool custom {@link PageTool}
      */
-    public void setPageTool(PageTool pageTool) {
+    private void setPageTool(PageTool pageTool) {
         this.pageTool = pageTool;
     }
 
