@@ -25,7 +25,7 @@
    }
    ```
 
-3. 调用 **MyQueryBuilder#build** 构造query
+3. 调用 **MyQueryBuilder#build** 构造 query
 
    ```java
    public class TestQueryBuilder {
@@ -82,14 +82,14 @@
 
 用于设置查询属性
 
-| 注解              | 字段类型            | 功能                                  | 参数                                                         |
-| ----------------- | ------------------- | ------------------------------------- | ------------------------------------------------------------ |
-| @Higilighters     | Collection\<String> | 设置 ***highlight***                  | **type**: 高亮类型，默认为"fvh"                              |
-| @PageNo           | Integer             | 设置  ***from***                      | -                                                            |
-| @PageSize         | Integer             | 设置 **size**                         | -                                                            |
-| @Sort             | List\<Sortable>     | 设置 ，需自行实现 ***Sortable*** 接口 | -                                                            |
-| @Source           | Collection\<String> | 设置 ***_source.includes***           | -                                                            |
-| @TermsAggregation | Integer             | 设置 ***terms aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
+| 注解              | 字段类型            | 功能                                            | 参数                                                         |
+| ----------------- | ------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| @Higilighters     | Collection\<String> | 设置 ***highlight***                            | **type**: 高亮类型，默认为"fvh"                              |
+| @PageNo           | Integer             | 设置  ***from***                                | -                                                            |
+| @PageSize         | Integer             | 设置 **size**                                   | -                                                            |
+| @Sort             | List\<Sortable>     | 设置 ***sort***，需自行实现 ***Sortable*** 接口 | -                                                            |
+| @Source           | Collection\<String> | 设置 ***_source.includes***                     | -                                                            |
+| @TermsAggregation | Integer             | 设置 ***terms aggregation***                    | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
 
 > 保证 from + size <= max_result_window
 
@@ -99,7 +99,7 @@
 
 ##### 搜索上下文注解
 
-决定搜索类型如何影响搜索结果（过滤还是影响评分）
+决定**搜索类型注解**如何影响搜索结果（过滤还是影响评分）
 
 | 注解     | 功能                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -135,13 +135,15 @@ AbstractQueryBuilder#build 方法流程如下
 
 你可以在抽象方法中自定义 query。
 
-例如，自定义 filter query
+例如，自定义 **filter query**
 
 ```java
 @Override
-protected void customFilterQueries(List<QueryBuilder> filterQueries, StuSearchCriteria stuSearchCriteria) {
+protected void customFilterQueries(List<QueryBuilder> filterQueries, 
+                                   StuSearchCriteria stuSearchCriteria) {
     // 在这里自定义不通过注解方式生成的 query
-    Optional.ofNullable(stuSearchCriteria.getCustomField()).ifPresent(t -> filterQueries.add(termQuery("customFilterField", t)));
+    Optional.ofNullable(stuSearchCriteria.getCustomField())
+        .ifPresent(t -> filterQueries.add(termQuery("customFilterField", t)));
 }
 ```
 
