@@ -32,12 +32,12 @@ You can integrate it in your project with these steps:
            // instance MyQueryBuilder
            MyQueryBuilder myQueryBuilder = new MyQueryBuilder();
            // instance MySearchCriteria
-   		MySearchCriteria mySearchCriteria = new MySearchCriteria();
-   		mySearchCriteria.setName("jack");
+           MySearchCriteria mySearchCriteria = new MySearchCriteria();
+           mySearchCriteria.setName("jack");
            // invoke build method
            String dsl = myQueryBuilder.build(mySearchCriteria);
            // enjoy it!
-   		System.out.println(dsl);
+           System.out.println(dsl);
        }
    }
    ```

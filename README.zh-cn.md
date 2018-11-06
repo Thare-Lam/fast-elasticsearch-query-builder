@@ -33,12 +33,12 @@
            // 实例化 MyQueryBuilder
            MyQueryBuilder myQueryBuilder = new MyQueryBuilder();
            // 实例化 MySearchCriteria
-   		MySearchCriteria mySearchCriteria = new MySearchCriteria();
-   		mySearchCriteria.setName("jack");
+           MySearchCriteria mySearchCriteria = new MySearchCriteria();
+           mySearchCriteria.setName("jack");
            // 调用 build 方法
            String dsl = myQueryBuilder.build(mySearchCriteria);
            // enjoy it!
-   		System.out.println(dsl);
+           System.out.println(dsl);
        }
    }
    ```
