@@ -1,5 +1,5 @@
 # fast-elasticsearch-query-builder
-A fast way to build **ElasticSearch** query string, ***even without writing implement code.***
+A fast way to build **ElasticSearch** query dsl string, ***even without writing implement code.***
 
 *Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)*
 
@@ -29,10 +29,15 @@ You can integrate it in your project with these steps:
    ```java
    public class TestQueryBuilder {
        public static void main(String[] args) {
+           // instance MyQueryBuilder
            MyQueryBuilder myQueryBuilder = new MyQueryBuilder();
+           // instance MySearchCriteria
    		MySearchCriteria mySearchCriteria = new MySearchCriteria();
    		mySearchCriteria.setName("jack");
-   		System.out.println(myQueryBuilder.build(mySearchCriteria));
+           // invoke build method
+           String dsl = myQueryBuilder.build(mySearchCriteria);
+           // enjoy it!
+   		System.out.println(dsl);
        }
    }
    ```

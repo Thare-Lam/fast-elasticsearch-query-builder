@@ -1,6 +1,6 @@
 # fast-elasticsearch-query-builder
 
-迅速构建**ElasticSearch**查询语句，***甚至可以不写一行实现代码。***
+迅速构建**ElasticSearch**查询 dsl，***甚至可以不写一行实现代码。***
 
 *其它语言: [English](README.md), [简体中文](README.zh-cn.md)*
 
@@ -18,7 +18,7 @@
    }
    ```
 
-2. 编写 query builder 类 **MyQueryBuilder** 继承 **BaseQueryBuilder**, 并指定 **SearchCriteria** 为泛型类
+2. 编写 query builder 类 **MyQueryBuilder** 继承 **BaseQueryBuilder**, 并指定 **MySearchCriteria** 为泛型类
 
    ```java
    public class MyQueryBuilder extends BaseQueryBuilder<MySearchCriteria> {
@@ -30,10 +30,15 @@
    ```java
    public class TestQueryBuilder {
        public static void main(String[] args) {
+           // 实例化 MyQueryBuilder
            MyQueryBuilder myQueryBuilder = new MyQueryBuilder();
+           // 实例化 MySearchCriteria
    		MySearchCriteria mySearchCriteria = new MySearchCriteria();
    		mySearchCriteria.setName("jack");
-   		System.out.println(myQueryBuilder.build(mySearchCriteria));
+           // 调用 build 方法
+           String dsl = myQueryBuilder.build(mySearchCriteria);
+           // enjoy it!
+   		System.out.println(dsl);
        }
    }
    ```
