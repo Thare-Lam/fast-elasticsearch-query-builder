@@ -1,4 +1,4 @@
-# fast-es-query-builder
+# fast-elasticsearch-query-builder
 A fast way to build **ElasticSearch** query string, ***even without writing implement code.***
 
 *Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)*
@@ -69,13 +69,13 @@ You can integrate it in your project with these steps:
    }
    ```
 
-***fase-es-query-builder*** generates dsl based on `org.elasticsearch-elasticsearch-6.3.0`
+***fast-elasticsearch-query-builder*** generates dsl based on `org.elasticsearch-elasticsearch-6.3.0`
 
 ## Instruction
 
 ### Annotation Instruction
 
-***fase-es-query-builder*** privides two kinds of annotation to build query string: **Function Annotation** and **Query Annotation**
+***fast-elasticsearch-query-builder*** privides two kinds of annotation to build query string: **Function Annotation** and **Query Annotation**.
 
 #### Function Annotation
 
@@ -94,7 +94,7 @@ To set query properties.
 
 #### Query Annotation
 
-To build query clause. It includes **Query Context Annotation** and **Query Type Annotation**, and they must be used together.
+To build query clause. It includes **Query Context Annotation** and **Query Type Annotation**, and they ***must be used together***.
 
 ##### Query Context Annotation
 
@@ -117,10 +117,10 @@ Decides the behavior of search.
 
 | Annotation | Field Type    | Function                 | Parameters                                                   |
 | ---------- | ------------- | ------------------------ | ------------------------------------------------------------ |
-| @Match     | String        | set ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
+| @Match     | String        | set ***match query***    | **operator**: control boolean clause (or / and)              |
 | @Term      | -             | set ***term query***     | -                                                            |
 | @Terms     | Collection<?> | set ***terms query***    | -                                                            |
-| @Range     | Number        | set ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+| @Range     | Number        | set ***range query***    | **type**: boundary type (from / to)<br />**includedBoundary**: whether includes boundary |
 | @Exists    | Boolean       | set ***exists query***   | -                                                            |
 | @Wildcard  | String        | set ***wildcard query*** | -                                                            |
 
@@ -130,7 +130,7 @@ Decides the behavior of search.
 
 AbstractQueryBuilder#build flow chart like this:
 
-![AbstractQueryBuilder#build flow chart](https://raw.githubusercontent.com/Thare-Lam/fast-es-query-builder/master/query-builder-flow-chart.jpg)
+![AbstractQueryBuilder#build flow chart](https://raw.githubusercontent.com/Thare-Lam/fast-elasticsearch-query-builder/master/query-builder-flow-chart.jpg)
 
 You can custom your query in the abstract method.
 

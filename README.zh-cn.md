@@ -1,4 +1,4 @@
-# fast-es-query-builder
+# fast-elasticsearch-query-builder
 
 迅速构建**ElasticSearch**查询语句，***甚至可以不写一行实现代码。***
 
@@ -70,13 +70,13 @@
    }
    ```
 
-***fase-es-query-builder*** *基于 `org.elasticsearch-elasticsearch-6.3.0` 来生成dsl，故兼容性与 `org.elasticsearch-elasticsearch-6.3.0` 一致。*
+***fase-elasticsearch-query-builder*** *基于 `org.elasticsearch-elasticsearch-6.3.0` 来生成dsl，故兼容性与 `org.elasticsearch-elasticsearch-6.3.0` 一致。*
 
 ## 说明
 
 ### 注解说明
 
-***fase-es-query-builder*** 提供两种类型的注解来构造query: **功能性注解**和**查询类注解**
+***fast-elasticsearch-query-builder*** 提供两种类型的注解来构造query: **功能性注解**和**查询类注解**
 
 #### 功能性注解
 
@@ -131,7 +131,7 @@
 
 AbstractQueryBuilder#build 方法流程如下
 
-![AbstractQueryBuilder#build flow chart](https://raw.githubusercontent.com/Thare-Lam/fast-es-query-builder/master/query-builder-flow-chart.jpg)
+![AbstractQueryBuilder#build flow chart](https://raw.githubusercontent.com/Thare-Lam/fast-elasticsearch-query-builder/master/query-builder-flow-chart.jpg)
 
 你可以在抽象方法中自定义 query。
 
