@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @Slf4j
 public class TestQueryBuilder {
@@ -14,7 +15,7 @@ public class TestQueryBuilder {
         StuSearchCriteria searchCriteria = StuSearchCriteria.builder()
                 .pageNo(3)
                 .pageSize(15)
-                .highlighters(Arrays.asList(StuFieldName.INTRODUCE))
+                .highlighters(Collections.singletonList(StuFieldName.INTRODUCE))
                 .sources(Arrays.asList(StuFieldName.NAME, StuFieldName.AGE, StuFieldName.MATH_SCORE))
                 .ageAggregation(2)
                 .sorts(Arrays.asList(StuSortEnum.MATH_SCORE_DESC, StuSortEnum.SCORE_DESC))
