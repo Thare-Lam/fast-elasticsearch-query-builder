@@ -136,7 +136,7 @@
 | @MatchPhrase | -             | 设置 ***match phrase query*** | **fieldName**:索引字段名，默认取注解所在字段的名称<br/>**analyzer**: 分词器<br/>**slop**: 词项距离 |
 | @Term        | -             | 设置 ***term query***         | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 | @Terms       | Collection<?> | 设置 ***terms query***        | **fieldName**:索引字段名，默认取注解所在字段的名称           |
-| @Range       | Number        | 设置 ***range query***        | ****fieldName**:索引字段名，默认取注解所在字段的名称<br/>type**: 边界类型（from / to）<br/>**includedBoundary**: 是否包含边界 |
+| @Range       | Number        | 设置 ***range query***        | **fieldName**:索引字段名，默认取注解所在字段的名称<br/>type**: 边界类型（from / to）<br/>**includedBoundary**: 是否包含边界 |
 | @Exists      | Boolean       | 设置 ***exists query***       | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 | @Wildcard    | -             | 设置 ***wildcard query***     | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 
