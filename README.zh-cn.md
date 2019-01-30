@@ -102,10 +102,10 @@
 
 | 注解                      | 字段类型 | 功能                                  | 参数                                                         |
 | ------------------------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
-| @CardinalityAggregation   | Boolean  | 设置 ***cardinality aggregation***    | **name**: 聚合名称<br />**field**: 聚合字段<br />**precisionThreshold**: 精度极限值 |
-| @ExtendedStatsAggregation | Boolean  | 设置 ***extended stats aggregation*** | **name**: 聚合名称<br />**field**: 聚合字段                  |
-| @StatsAggregation         | Boolean  | 设置 ***stats aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段                  |
-| @TermsAggregation         | Integer  | 设置 ***terms aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
+| @CardinalityAggregation   | Boolean  | 设置 ***cardinality aggregation***    | **name**: 聚合名称<br/>**field**: 聚合字段<br/>**precisionThreshold**: 精度极限值 |
+| @ExtendedStatsAggregation | Boolean  | 设置 ***extended stats aggregation*** | **name**: 聚合名称<br/>**field**: 聚合字段                  |
+| @StatsAggregation         | Boolean  | 设置 ***stats aggregation***          | **name**: 聚合名称<br/>**field**: 聚合字段                  |
+| @TermsAggregation         | Integer  | 设置 ***terms aggregation***          | **name**: 聚合名称<br/>**field**: 聚合字段<br/>**maxSize**: 聚合最大结果集<br/>**order**: 聚合结果排序方式<br/>**executionHint**: 聚合机制 |
 
 #### 查询类注解
 
@@ -132,11 +132,11 @@
 
 | 注解         | 字段类型      | 功能                          | 参数                                                         |
 | ------------ | ------------- | ----------------------------- | ------------------------------------------------------------ |
-| @Match       | -             | 设置 ***match query***        | **fieldName**:索引字段名，默认取注解所在字段的名称<br />**operator**: 控制 boolean 子句关系（or / and） |
-| @MatchPhrase | -             | 设置 ***match phrase query*** | **fieldName**:索引字段名，默认取注解所在字段的名称<br />**analyzer**: 分词器<br />**slop**: 词项距离 |
+| @Match       | -             | 设置 ***match query***        | **fieldName**:索引字段名，默认取注解所在字段的名称<br/>**operator**: 控制 boolean 子句关系（or / and） |
+| @MatchPhrase | -             | 设置 ***match phrase query*** | **fieldName**:索引字段名，默认取注解所在字段的名称<br/>**analyzer**: 分词器<br/>**slop**: 词项距离 |
 | @Term        | -             | 设置 ***term query***         | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 | @Terms       | Collection<?> | 设置 ***terms query***        | **fieldName**:索引字段名，默认取注解所在字段的名称           |
-| @Range       | Number        | 设置 ***range query***        | ****fieldName**:索引字段名，默认取注解所在字段的名称<br />type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+| @Range       | Number        | 设置 ***range query***        | ****fieldName**:索引字段名，默认取注解所在字段的名称<br/>type**: 边界类型（from / to）<br/>**includedBoundary**: 是否包含边界 |
 | @Exists      | Boolean       | 设置 ***exists query***       | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 | @Wildcard    | -             | 设置 ***wildcard query***     | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 

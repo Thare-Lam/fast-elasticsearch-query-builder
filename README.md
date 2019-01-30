@@ -99,12 +99,12 @@ You can integrate it in your project with these steps:
 ##### Set aggregation
 
 
-| 注解                      | 字段类型 | 功能                                 | 参数                                                         |
-| ------------------------- | -------- | ------------------------------------ | ------------------------------------------------------------ |
-| @CardinalityAggregation   | Boolean  | set ***cardinality aggregation***    | **name**: aggregation name<br />**field**: aggregation field<br />**precisionThreshold**: precision threshold |
-| @ExtendedStatsAggregation | Boolean  | set ***extended stats aggregation*** | **name**: aggregation name<br />**field**: aggregation field |
-| @StatsAggregation         | Boolean  | set ***stats aggregation***          | **name**: aggregation name<br />**field**: aggregation field |
-| @TermsAggregation         | Integer  | set ***terms aggregation***          | **name**: aggregation name<br />**field**: aggregation field<br />**maxSize**: max value of the field<br />**order**: buckets' order<br />**executionHint**: mechanisms of aggregations execution |
+| Annotation                | Field Type | Function                             | Parameters                                                   |
+| ------------------------- | ---------- | ------------------------------------ | ------------------------------------------------------------ |
+| @CardinalityAggregation   | Boolean    | set ***cardinality aggregation***    | **name**: aggregation name<br/>**field**: aggregation field<br/>**precisionThreshold**: precision threshold |
+| @ExtendedStatsAggregation | Boolean    | set ***extended stats aggregation*** | **name**: aggregation name<br/>**field**: aggregation field |
+| @StatsAggregation         | Boolean    | set ***stats aggregation***          | **name**: aggregation name<br/>**field**: aggregation field |
+| @TermsAggregation         | Integer    | set ***terms aggregation***          | **name**: aggregation name<br/>**field**: aggregation field<br/>**maxSize**: max value of the field<br/>**order**: buckets' order<br/>**executionHint**: mechanisms of aggregations execution |
 
 #### Query Annotation
 
@@ -131,11 +131,11 @@ Decides the behavior of search.
 
 | Annotation   | Field Type    | Function                     | Parameters                                                   |
 | ------------ | ------------- | ---------------------------- | ------------------------------------------------------------ |
-| @Match       | -             | set ***match query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br />**operator**: control boolean clause (or / and) |
-| @MatchPhrase | -             | set ***match phrase query*** | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br />**analyzer**: analyzer<br />**slop**: term slop |
+| @Match       | -             | set ***match query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br/>**operator**: control boolean clause (or / and) |
+| @MatchPhrase | -             | set ***match phrase query*** | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br/>**analyzer**: analyzer<br/>**slop**: term slop |
 | @Term        | -             | set ***term query***         | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
 | @Terms       | Collection<?> | set ***terms query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
-| @Range       | Number        | set ***range query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br/>**type**: boundary type (from / to)<br />**includedBoundary**: whether includes boundary |
+| @Range       | Number        | set ***range query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br/>**type**: boundary type (from / to)<br/>**includedBoundary**: whether includes boundary |
 | @Exists      | Boolean       | set ***exists query***       | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
 | @Wildcard    | -             | set ***wildcard query***     | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
 
