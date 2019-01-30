@@ -12,7 +12,10 @@ public class HighlightHelper {
     @SuppressWarnings("unchecked")
     public static void set(SearchSourceBuilder searchSource, Annotation annotation, Object value) {
         Highlighters highlighters = (Highlighters) annotation;
-        HighlightBuilder highlight = new HighlightBuilder().highlighterType(highlighters.type());
+        HighlightBuilder highlight = new HighlightBuilder();
+        if (highlighters.type().trim().length() > 0) {
+            highlight.highlighterType(highlighters.type());
+        }
         ((Collection<String>) value).forEach(highlight::field);
         searchSource.highlighter(highlight);
     }

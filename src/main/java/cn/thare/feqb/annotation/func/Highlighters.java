@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Highlighters {
 
-    String type() default "fvh";
+    String type() default "";
 
 }
