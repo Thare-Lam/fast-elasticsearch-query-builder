@@ -31,7 +31,7 @@ public class PageTool {
 
     @NonNull
     @Builder.Default
-    private Integer maxPageSize = 100;
+    private Integer maxPageSize = 10000;
 
     @NonNull
     @Builder.Default

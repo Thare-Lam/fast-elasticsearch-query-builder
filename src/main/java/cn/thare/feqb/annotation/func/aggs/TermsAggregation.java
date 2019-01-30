@@ -21,7 +21,7 @@ public @interface TermsAggregation {
     /**
      * @return the max value of the size of aggregation set
      */
-    int maxSize() default 20;
+    int maxSize() default Integer.MAX_VALUE;
 
     Order[] order() default {};
 
