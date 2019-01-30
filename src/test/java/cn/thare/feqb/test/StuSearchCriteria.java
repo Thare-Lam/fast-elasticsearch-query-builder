@@ -1,6 +1,9 @@
 package cn.thare.feqb.test;
 
 import cn.thare.feqb.annotation.func.*;
+import cn.thare.feqb.annotation.func.aggs.CardinalityAggregation;
+import cn.thare.feqb.annotation.func.aggs.ExtendedStatsAggregation;
+import cn.thare.feqb.annotation.func.aggs.StatsAggregation;
 import cn.thare.feqb.annotation.func.aggs.TermsAggregation;
 import cn.thare.feqb.annotation.query.*;
 import cn.thare.feqb.annotation.query.type.*;
@@ -27,11 +30,22 @@ public class StuSearchCriteria {
     @Source
     private List<String> sources;
 
-    @TermsAggregation(name = "ageAggregation", field = StuFieldName.AGE, maxSize = 5, order = TermsAggregation.Order.KEY_ASC)
-    private Integer ageAggregation;
-
     @Sort
     private List<StuSortEnum> sorts;
+
+    // func - aggs
+
+    @CardinalityAggregation(name = "ageCardinalityAggregation", field = StuFieldName.AGE)
+    private Boolean ageCardinalityAggregation;
+
+    @ExtendedStatsAggregation(name = "ageExtendedStatsAggregation", field = StuFieldName.AGE)
+    private Boolean ageExtendedStatsAggregation;
+
+    @StatsAggregation(name = "ageStatsAggregation", field = StuFieldName.AGE)
+    private Boolean ageStatsAggregation;
+
+    @TermsAggregation(name = "ageTermsAggregation", field = StuFieldName.AGE, maxSize = 5, order = TermsAggregation.Order.KEY_ASC)
+    private Integer ageTermsAggregation;
 
     // query
 

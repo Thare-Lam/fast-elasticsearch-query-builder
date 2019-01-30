@@ -7,15 +7,17 @@ import java.lang.annotation.Target;
 
 /**
  * Field's type must be {@link Boolean}
- * <p>Implied whether handle ExtendedStatsAggregation
+ * <p>Implied whether handle CardinalityAggregation
  */
 @Aggregation
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExtendedStatsAggregation {
+public @interface CardinalityAggregation {
 
     String name();
 
     String field();
+
+    int precisionThreshold() default 3000;
 
 }

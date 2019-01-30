@@ -7,12 +7,12 @@ import java.lang.annotation.Target;
 
 /**
  * Field's type must be {@link Boolean}
- * <p>Implied whether handle ExtendedStatsAggregation
+ * <p>Implied whether handle StatsAggregation
  */
 @Aggregation
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExtendedStatsAggregation {
+public @interface StatsAggregation {
 
     String name();
 

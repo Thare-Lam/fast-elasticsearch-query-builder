@@ -15,20 +15,20 @@ public class StuQueryBuilder extends BaseQueryBuilder<StuSearchCriteria> {
     @Override
     protected PageTool generatePageTool() {
         // custom PageTool
-        return PageTool.builder().defaultPageSize(10).maxPageSize(100).build();
+        return PageTool.builder().defaultPageSize(10).maxPageSize(500).build();
     }
 
     @Override
     protected void preBuild(SearchSourceBuilder searchSource, StuSearchCriteria stuSearchCriteria) {
         // rewrite search criteria
-        stuSearchCriteria.setCustomField("customPrefix-" + stuSearchCriteria.getCustomField() + "-customSuffix");
+        stuSearchCriteria.setCustomField("" + stuSearchCriteria.getCustomField() + "- addedByPreBuild");
     }
 
     @Override
     protected void postBuild(SearchSourceBuilder searchSource, StuSearchCriteria stuSearchCriteria) {
         // special logic
-        if (stuSearchCriteria.getPageSize() == 1) {
-            searchSource.size(10);
+        if (stuSearchCriteria.getPageSize() != null) {
+            searchSource.size(stuSearchCriteria.getPageSize() * 10);
         }
     }
 

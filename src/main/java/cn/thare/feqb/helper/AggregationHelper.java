@@ -1,9 +1,15 @@
 package cn.thare.feqb.helper;
 
+import cn.thare.feqb.annotation.func.aggs.CardinalityAggregation;
+import cn.thare.feqb.annotation.func.aggs.ExtendedStatsAggregation;
+import cn.thare.feqb.annotation.func.aggs.StatsAggregation;
 import cn.thare.feqb.annotation.func.aggs.TermsAggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.cardinality.CardinalityAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.stats.StatsAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.stats.extended.ExtendedStatsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 import java.lang.annotation.Annotation;
@@ -17,6 +23,12 @@ public class AggregationHelper {
     public static void set(SearchSourceBuilder searchSource, Annotation annotation, Object value) {
         if (TermsAggregation.class == annotation.annotationType()) {
             setTermsAggregation(searchSource, (TermsAggregation) annotation, (Integer) value);
+        } else if (StatsAggregation.class == annotation.annotationType()) {
+            setStatsAggregation(searchSource, (StatsAggregation) annotation, (Boolean) value);
+        } else if (ExtendedStatsAggregation.class == annotation.annotationType()) {
+            setExtendedStatsAggregation(searchSource, (ExtendedStatsAggregation) annotation, (Boolean) value);
+        } else if (CardinalityAggregation.class == annotation.annotationType()) {
+            setCardinalityAggregation(searchSource, (CardinalityAggregation) annotation, (Boolean) value);
         }
     }
 
@@ -45,6 +57,34 @@ public class AggregationHelper {
         }
         termsAggregation.executionHint(aggregation.executionHint().value());
         searchSource.aggregation(termsAggregation);
+    }
+
+    private static void setStatsAggregation(SearchSourceBuilder searchSource, StatsAggregation aggregation,
+            Boolean value) {
+        if (!value) {
+            return;
+        }
+        StatsAggregationBuilder statsAggregation = new StatsAggregationBuilder(aggregation.name()).field(aggregation.field());
+        searchSource.aggregation(statsAggregation);
+    }
+
+    private static void setExtendedStatsAggregation(SearchSourceBuilder searchSource, ExtendedStatsAggregation aggregation,
+            Boolean value) {
+        if (!value) {
+            return;
+        }
+        ExtendedStatsAggregationBuilder extendedStatsAggregation = new ExtendedStatsAggregationBuilder(aggregation.name()).field(aggregation.field());
+        searchSource.aggregation(extendedStatsAggregation);
+    }
+
+    private static void setCardinalityAggregation(SearchSourceBuilder searchSource, CardinalityAggregation aggregation,
+            Boolean value) {
+        if (!value) {
+            return;
+        }
+        CardinalityAggregationBuilder cardinalityAggregation = AggregationBuilders.cardinality(aggregation.name())
+                .field(aggregation.field()).precisionThreshold(aggregation.precisionThreshold());
+        searchSource.aggregation(cardinalityAggregation);
     }
 
 }
