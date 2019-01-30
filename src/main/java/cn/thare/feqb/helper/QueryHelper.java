@@ -3,10 +3,7 @@ package cn.thare.feqb.helper;
 import cn.thare.feqb.annotation.query.*;
 import cn.thare.feqb.annotation.query.type.*;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.Operator;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.RangeQueryBuilder;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 import java.lang.annotation.Annotation;
@@ -85,6 +82,19 @@ public class QueryHelper {
                 Match match = field.getDeclaredAnnotation(Match.class);
                 String fieldName = firstHasText(match.fieldName(), field.getName());
                 return matchQuery(fieldName, value).operator(Operator.fromString(match.operator().value()));
+            } else if (Objects.nonNull(field.getDeclaredAnnotation(MatchPhrase.class))) {
+                MatchPhrase matchPhrase = field.getDeclaredAnnotation(MatchPhrase.class);
+                String fieldName = firstHasText(matchPhrase.fieldName(), field.getName());
+                MatchPhraseQueryBuilder query = matchPhraseQuery(fieldName, value);
+                String analyzer = matchPhrase.analyzer().trim();
+                if (analyzer.length() > 0) {
+                    query.analyzer(analyzer);
+                }
+                int slop = matchPhrase.slop();
+                if (slop != -1) {
+                    query.slop(slop);
+                }
+                return query;
             } else if (Objects.nonNull(field.getDeclaredAnnotation(Term.class))) {
                 Term term = field.getDeclaredAnnotation(Term.class);
                 String fieldName = firstHasText(term.fieldName(), field.getName());

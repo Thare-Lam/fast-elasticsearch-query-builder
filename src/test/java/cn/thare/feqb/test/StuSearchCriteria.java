@@ -77,6 +77,10 @@ public class StuSearchCriteria {
     @Match(operator = Match.Operator.AND)
     private String introduce;
 
+    @Filter
+    @MatchPhrase(fieldName = StuFieldName.NAME)
+    private String nameMatchPhrase;
+
     /**
      * this field will affect query in customXxQueries method
      */
