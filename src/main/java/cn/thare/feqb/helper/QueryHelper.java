@@ -135,7 +135,7 @@ public class QueryHelper {
     }
 
     private String firstHasText(String first, String second) {
-        return (Objects.nonNull(first) && !first.trim().isEmpty()) ? first : second;
+        return (Objects.nonNull(first) && !first.trim().isEmpty()) ? first.trim() : second;
     }
 
 }

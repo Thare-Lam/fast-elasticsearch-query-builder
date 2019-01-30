@@ -13,8 +13,9 @@ public class HighlightHelper {
     public static void set(SearchSourceBuilder searchSource, Annotation annotation, Object value) {
         Highlighters highlighters = (Highlighters) annotation;
         HighlightBuilder highlight = new HighlightBuilder();
-        if (highlighters.type().trim().length() > 0) {
-            highlight.highlighterType(highlighters.type());
+        String type = highlighters.type().trim();
+        if (type.length() > 0) {
+            highlight.highlighterType(type);
         }
         ((Collection<String>) value).forEach(highlight::field);
         searchSource.highlighter(highlight);
