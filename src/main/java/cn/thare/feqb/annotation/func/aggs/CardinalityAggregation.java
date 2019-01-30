@@ -18,6 +18,6 @@ public @interface CardinalityAggregation {
 
     String field();
 
-    int precisionThreshold() default 3000;
+    long precisionThreshold() default -1L;
 
 }

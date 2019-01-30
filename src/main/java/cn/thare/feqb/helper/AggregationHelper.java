@@ -85,8 +85,11 @@ public class AggregationHelper {
         if (!value) {
             return;
         }
-        CardinalityAggregationBuilder cardinalityAggregation = AggregationBuilders.cardinality(aggregation.name())
-                .field(aggregation.field()).precisionThreshold(aggregation.precisionThreshold());
+        CardinalityAggregationBuilder cardinalityAggregation = AggregationBuilders.cardinality(aggregation.name()).field(aggregation.field());
+        long precisionThreshold = aggregation.precisionThreshold();
+        if (precisionThreshold > 0) {
+            cardinalityAggregation.precisionThreshold(precisionThreshold);
+        }
         searchSource.aggregation(cardinalityAggregation);
     }
 
