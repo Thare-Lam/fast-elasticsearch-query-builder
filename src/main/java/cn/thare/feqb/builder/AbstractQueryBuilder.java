@@ -1,6 +1,7 @@
 package cn.thare.feqb.builder;
 
 import cn.thare.feqb.annotation.func.*;
+import cn.thare.feqb.annotation.func.aggs.Aggregation;
 import cn.thare.feqb.annotation.query.Query;
 import cn.thare.feqb.helper.*;
 import cn.thare.feqb.helper.QueryHelper;

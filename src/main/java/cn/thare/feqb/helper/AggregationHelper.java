@@ -1,6 +1,6 @@
 package cn.thare.feqb.helper;
 
-import cn.thare.feqb.annotation.func.TermsAggregation;
+import cn.thare.feqb.annotation.func.aggs.TermsAggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;

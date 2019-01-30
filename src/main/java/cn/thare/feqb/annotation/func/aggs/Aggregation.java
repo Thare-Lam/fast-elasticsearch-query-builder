@@ -1,4 +1,4 @@
-package cn.thare.feqb.annotation.func;
+package cn.thare.feqb.annotation.func.aggs;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,6 +1,7 @@
 package cn.thare.feqb.test;
 
 import cn.thare.feqb.annotation.func.*;
+import cn.thare.feqb.annotation.func.aggs.TermsAggregation;
 import cn.thare.feqb.annotation.query.*;
 import cn.thare.feqb.annotation.query.type.*;
 import lombok.Builder;
