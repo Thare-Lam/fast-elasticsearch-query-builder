@@ -84,18 +84,27 @@ You can integrate it in your project with these steps:
 
 #### Function Annotation
 
-To set query properties.
+##### Set query properties.
 
-| Annotation        | Field Type          | Function                                                     | Parameters                                                   |
-| ----------------- | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| @Higilighters     | Collection\<String> | set ***highlight***                                          | **type**: the highlight type, default to "fvh"               |
-| @PageNo           | Integer             | set  ***from***                                              | -                                                            |
-| @PageSize         | Integer             | set **size**                                                 | -                                                            |
-| @Sort             | List\<Sortable>     | set ***sort***, you should implement ***Sortable*** interface | -                                                            |
-| @Source           | Collection\<String> | set ***_source.includes***                                   | -                                                            |
-| @TermsAggregation | Integer             | set ***terms aggregation***                                  | **name**: aggregation name<br />**field**: aggregation field<br />**maxSize**: max value of the field<br />**order**: buckets' order<br />**executionHint**: mechanisms of aggregations execution |
+| Annotation    | Field Type          | Function                                                     | Parameters                   |
+| ------------- | ------------------- | ------------------------------------------------------------ | ---------------------------- |
+| @Higilighters | Collection\<String> | set ***highlight***                                          | **type**: the highlight type |
+| @PageNo       | Integer             | set  ***from***                                              | -                            |
+| @PageSize     | Integer             | set **size**                                                 | -                            |
+| @Sort         | List\<Sortable>     | set ***sort***, you should implement ***Sortable*** interface | -                            |
+| @Source       | Collection\<String> | set ***_source.includes***                                   | -                            |
 
 > from + size <= max_result_window
+
+##### Set aggregation
+
+
+| 注解                      | 字段类型 | 功能                                 | 参数                                                         |
+| ------------------------- | -------- | ------------------------------------ | ------------------------------------------------------------ |
+| @CardinalityAggregation   | Boolean  | set ***cardinality aggregation***    | **name**: aggregation name<br />**field**: aggregation field<br />**precisionThreshold**: precision threshold |
+| @ExtendedStatsAggregation | Boolean  | set ***extended stats aggregation*** | **name**: aggregation name<br />**field**: aggregation field |
+| @StatsAggregation         | Boolean  | set ***stats aggregation***          | **name**: aggregation name<br />**field**: aggregation field |
+| @TermsAggregation         | Integer  | set ***terms aggregation***          | **name**: aggregation name<br />**field**: aggregation field<br />**maxSize**: max value of the field<br />**order**: buckets' order<br />**executionHint**: mechanisms of aggregations execution |
 
 #### Query Annotation
 
@@ -120,16 +129,15 @@ Decides how  **Query Type Annotation** affect the hits (just filter the hits or 
 
 Decides the behavior of search.
 
-| Annotation | Field Type    | Function                 | Parameters                                                   |
-| ---------- | ------------- | ------------------------ | ------------------------------------------------------------ |
-| @Match     | String        | set ***match query***    | **operator**: control boolean clause (or / and)              |
-| @Term      | -             | set ***term query***     | -                                                            |
-| @Terms     | Collection<?> | set ***terms query***    | -                                                            |
-| @Range     | Number        | set ***range query***    | **type**: boundary type (from / to)<br />**includedBoundary**: whether includes boundary |
-| @Exists    | Boolean       | set ***exists query***   | -                                                            |
-| @Wildcard  | String        | set ***wildcard query*** | -                                                            |
-
-> The annotations above contaion **fieldName** parameter, implicate the index field name using in building query, default to the field name that the annotation works on.
+| Annotation   | Field Type    | Function                     | Parameters                                                   |
+| ------------ | ------------- | ---------------------------- | ------------------------------------------------------------ |
+| @Match       | -             | set ***match query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br />**operator**: control boolean clause (or / and) |
+| @MatchPhrase | -             | set ***match phrase query*** | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br />**analyzer**: analyzer<br />**slop**: term slop |
+| @Term        | -             | set ***term query***         | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
+| @Terms       | Collection<?> | set ***terms query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
+| @Range       | Number        | set ***range query***        | **fieldName**: the index field name using in building query, default to the field name that the annotation works on<br/>**type**: boundary type (from / to)<br />**includedBoundary**: whether includes boundary |
+| @Exists      | Boolean       | set ***exists query***       | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
+| @Wildcard    | -             | set ***wildcard query***     | **fieldName**: the index field name using in building query, default to the field name that the annotation works on |
 
 ### Method Instruction
 

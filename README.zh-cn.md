@@ -85,18 +85,27 @@
 
 #### 功能性注解
 
-用于设置查询属性
+##### 设置查询属性
 
-| 注解              | 字段类型            | 功能                                            | 参数                                                         |
-| ----------------- | ------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
-| @Higilighters     | Collection\<String> | 设置 ***highlight***                            | **type**: 高亮类型，默认为"fvh"                              |
-| @PageNo           | Integer             | 设置  ***from***                                | -                                                            |
-| @PageSize         | Integer             | 设置 **size**                                   | -                                                            |
-| @Sort             | List\<Sortable>     | 设置 ***sort***，需自行实现 ***Sortable*** 接口 | -                                                            |
-| @Source           | Collection\<String> | 设置 ***_source.includes***                     | -                                                            |
-| @TermsAggregation | Integer             | 设置 ***terms aggregation***                    | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
+| 注解                      | 字段类型            | 功能                                            | 参数                                                         |
+| ------------------------- | ------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| @Higilighters             | Collection\<String> | 设置 ***highlight***                            | **type**: 高亮类型                                           |
+| @PageNo                   | Integer             | 设置  ***from***                                | -                                                            |
+| @PageSize                 | Integer             | 设置 **size**                                   | -                                                            |
+| @Sort                     | List\<Sortable>     | 设置 ***sort***，需自行实现 ***Sortable*** 接口 | -                                                            |
+| @Source                   | Collection\<String> | 设置 ***_source.includes***                     | -                                                            |
 
 > 保证 from + size <= max_result_window
+
+##### 设置聚合
+
+
+| 注解                      | 字段类型 | 功能                                  | 参数                                                         |
+| ------------------------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
+| @CardinalityAggregation   | Boolean  | 设置 ***cardinality aggregation***    | **name**: 聚合名称<br />**field**: 聚合字段<br />**precisionThreshold**: 精度极限值 |
+| @ExtendedStatsAggregation | Boolean  | 设置 ***extended stats aggregation*** | **name**: 聚合名称<br />**field**: 聚合字段                  |
+| @StatsAggregation         | Boolean  | 设置 ***stats aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段                  |
+| @TermsAggregation         | Integer  | 设置 ***terms aggregation***          | **name**: 聚合名称<br />**field**: 聚合字段<br />**maxSize**: 聚合最大结果集<br />**order**: 聚合结果排序方式<br />**executionHint**: 聚合机制 |
 
 #### 查询类注解
 
@@ -121,16 +130,15 @@
 
 决定匹配行为
 
-| 注解      | 字段类型      | 功能                      | 参数                                                         |
-| --------- | ------------- | ------------------------- | ------------------------------------------------------------ |
-| @Match    | String        | 设置 ***match query***    | **operator**: 控制 boolean 子句关系（or / and）              |
-| @Term     | -             | 设置 ***term query***     | -                                                            |
-| @Terms    | Collection<?> | 设置 ***terms query***    | -                                                            |
-| @Range    | Number        | 设置 ***range query***    | **type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
-| @Exists   | Boolean       | 设置 ***exists query***   | -                                                            |
-| @Wildcard | String        | 设置 ***wildcard query*** | -                                                            |
-
-> 以上注解均包含 **fieldName** 参数，表示构造 query 时的索引字段名，默认取注解所在字段的名称
+| 注解         | 字段类型      | 功能                          | 参数                                                         |
+| ------------ | ------------- | ----------------------------- | ------------------------------------------------------------ |
+| @Match       | -             | 设置 ***match query***        | **fieldName**:索引字段名，默认取注解所在字段的名称<br />**operator**: 控制 boolean 子句关系（or / and） |
+| @MatchPhrase | -             | 设置 ***match phrase query*** | **fieldName**:索引字段名，默认取注解所在字段的名称<br />**analyzer**: 分词器<br />**slop**: 词项距离 |
+| @Term        | -             | 设置 ***term query***         | **fieldName**:索引字段名，默认取注解所在字段的名称           |
+| @Terms       | Collection<?> | 设置 ***terms query***        | **fieldName**:索引字段名，默认取注解所在字段的名称           |
+| @Range       | Number        | 设置 ***range query***        | ****fieldName**:索引字段名，默认取注解所在字段的名称<br />type**: 边界类型（from / to）<br />**includedBoundary**: 是否包含边界 |
+| @Exists      | Boolean       | 设置 ***exists query***       | **fieldName**:索引字段名，默认取注解所在字段的名称           |
+| @Wildcard    | -             | 设置 ***wildcard query***     | **fieldName**:索引字段名，默认取注解所在字段的名称           |
 
 ### 方法说明
 
