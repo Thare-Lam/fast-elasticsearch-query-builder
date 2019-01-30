@@ -55,7 +55,9 @@ public class AggregationHelper {
             }).filter(Objects::nonNull).collect(Collectors.toList());
             termsAggregation.order(orders);
         }
-        termsAggregation.executionHint(aggregation.executionHint().value());
+        if (aggregation.executionHint().trim().length() > 0) {
+            termsAggregation.executionHint(aggregation.executionHint());
+        }
         searchSource.aggregation(termsAggregation);
     }
 

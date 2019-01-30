@@ -25,29 +25,12 @@ public @interface TermsAggregation {
 
     Order[] order() default {};
 
-    ExecutionHint executionHint() default ExecutionHint.GLOBAL_ORDINALS;
+    String executionHint() default "";
 
     enum Order {
 
         COUNT_ASC, COUNT_DESC, KEY_ASC, KEY_DESC
 
     }
-
-    enum ExecutionHint {
-
-        MAP("map"), GLOBAL_ORDINALS("global_ordinals");
-
-        private String value;
-
-        ExecutionHint(String value) {
-            this.value = value;
-        }
-
-        public String value() {
-            return this.value;
-        }
-
-    }
-
 
 }
